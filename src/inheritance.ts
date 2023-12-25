@@ -4,45 +4,67 @@ class Animal {
   protected coordX: number;
   protected coordY: number;
 
-  setX(x: number) {
+  constructor(hunger: number, health: number, coordX: number, coordY: number) {
+    this.hunger = hunger;
+    this.health = health;
+    this.coordX = coordX;
+    this.coordY = coordY;
+  }
+
+  getCoordX() {
+    return this.coordX;
+  }
+  getCoordY() {
+    return this.coordY;
+  }
+
+  setCoordX(x: number) {
     this.coordX = x;
   }
-  setY(y: number) {
+  setCoordY(y: number) {
     this.coordY = y;
   }
 
   eat() {
-    console.log("Eating");
+    console.log("Im eating");
   }
   sleep() {
-    console.log("sleeping");
+    console.log("Im sleeping");
   }
   move() {
-    console.log(`moving`);
+    console.log("Im moving");
   }
   makeNoise() {
-    console.log("aaaa");
+    console.log("make noise");
+  }
+  jump(x: number) {
+    console.log(x);
   }
 }
 
 class Dog extends Animal {
-  owner: string;
-
-  makeNoise() {
-    console.log("bark bark bark....");
+  makeNoise(): void {
+    console.log("Bark");
     super.makeNoise();
   }
+
+  place() {
+    console.log(`I'm at ${this.coordX}:${this.coordY}`);
+  }
+
   returnToOwner() {
     console.log(
-      `I am at X${this.coordX} Y${this.coordY}, Return to ${this.owner}`
+      `I'm at ${this.getCoordX()}:${this.getCoordY()} and now I'm running to owner`
     );
   }
 }
-class Cat extends Animal {}
 
-const dog = new Dog();
-dog.makeNoise();
-dog.setX(24);
-dog.setY(32);
-dog.owner = "Suresh";
-dog.returnToOwner();
+class Canine extends Dog {
+  talk() {
+    console.log("I'm canine");
+  }
+}
+
+const overDog = new Canine(7, 10, 75, 63);
+overDog.place();
+overDog.returnToOwner();

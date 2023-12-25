@@ -1,23 +1,23 @@
-class Player {
-  private health: number;
-  private speed: number;
+class Student {
+  name: string;
+  age: number;
+  private details: string;
 
-  setHealth(health: number) {
-    this.health = health;
-  }
-  getHealth() {
-    return this.health;
+  constructor(name: string, age: number, details: string) {
+    this.name = name;
+    this.age = age;
+    this.details = details;
   }
 
-  setSpeed(speed: number) {
-    this.speed = speed;
+  getDetails() {
+    return this.details;
   }
-  getSpeed() {
-    return this.speed;
+
+  run() {
+    console.log(`${this.name} running`);
   }
 }
 
-const mrx = new Player();
-
-mrx.setHealth(10);
-console.log(mrx.getHealth());
+const student1 = new Student("sures", 25, "sample details");
+student1.name = "Sures Ranathunga";
+console.log(student1.getDetails());
